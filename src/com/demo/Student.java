@@ -18,6 +18,7 @@ public class Student implements Serializable {
 	private Integer studentId;
 	private String name;
 	
+
 	@OneToMany(mappedBy="student",cascade = CascadeType.ALL)
 	private List<Address> addresses;
 	

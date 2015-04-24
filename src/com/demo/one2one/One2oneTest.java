@@ -1,10 +1,14 @@
 package com.demo.one2one;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Query;
 import javax.persistence.Table;
 
@@ -32,6 +36,13 @@ public class One2oneTest extends DaoTest {
 		//c.setOrder(order);
 		order.setCustomer(c);
 		
+
+		OrderItem item = new OrderItem();
+		item.setId(2);
+		item.setName("book");
+		item.setOrder(order);
+		order.getItems().add(item);
+		
 		em.persist(order);
 		
 		em.getTransaction().commit();
@@ -58,6 +69,20 @@ class Order{
 	private String name;
 	private Double amount;
 	
+<<<<<<< HEAD
+=======
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="order")
+	private List<OrderItem> items = new ArrayList<OrderItem>();
+	
+	public List<OrderItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
+
+>>>>>>> one2one-only persist from owing side
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
@@ -102,7 +127,11 @@ class Order{
 class Customer{
 	@Id
 	private Integer id;
+<<<<<<< HEAD
 	private String name;
+=======
+	private String name;		
+>>>>>>> one2one-only persist from owing side
 	
 	@OneToOne(mappedBy="customer",cascade=CascadeType.ALL)
 	private Order order;
@@ -125,7 +154,42 @@ class Customer{
 	public void setName(String name) {
 		this.name = name;
 	}
+<<<<<<< HEAD
 	
 	
+=======
+			
+}
+
+@Entity
+class OrderItem{
+	@Id
+	private Integer id;
+	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="order_id")
+	private Order order;
+	
+	
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+>>>>>>> one2one-only persist from owing side
 	
 }

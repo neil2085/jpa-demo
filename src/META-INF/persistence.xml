@@ -8,6 +8,7 @@
 		<class>com.demo.SubjectClass</class>
 		<class>com.demo.one2one.Customer</class>
 		<class>com.demo.one2one.Order</class>
+		<class>com.demo.one2one.OrderItem</class>
 		<properties>
 		
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/mydb2"/>

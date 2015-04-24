@@ -18,6 +18,18 @@ public class Student implements Serializable {
 	private Integer studentId;
 	private String name;
 	
+	@OneToMany(mappedBy="student",cascade = CascadeType.ALL)
+	private List<Address> addresses;
+	
+	public List<Address> getAddresses() {
+		if(addresses==null) addresses = new ArrayList<Address>();
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="student_class", 
 	joinColumns={@JoinColumn(name="sid",referencedColumnName="studentId")},
@@ -56,5 +68,6 @@ public class Student implements Serializable {
 		this.classes = classes;
 	}
    
+	
 	
 }

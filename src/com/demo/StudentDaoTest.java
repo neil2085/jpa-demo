@@ -32,14 +32,18 @@ public class StudentDaoTest extends DaoTest {
 	}
 	
 	@Test
-	public void addClass(){
+	public void addClassAddress(){
 		em.getTransaction().begin();
 		Student s1 = em.find(Student.class, 1);
-		SubjectClass c2 = new SubjectClass();
-		c2.setClassId(2);
-		c2.setName("computer");
-		s1.getClasses().add(c2);
-		em.merge(s1);
+		
+		Address ad = new Address();
+		ad.setId(6);
+		ad.setName("100 front stree 6");
+		s1.getAddresses().add(ad);
+		
+		ad.setStudent(s1); //have to set student, otherwise the sid is empty
+		
+		em.persist(s1);
 		em.flush();
 		em.getTransaction().commit();
 	}

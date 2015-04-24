@@ -18,6 +18,17 @@ public class Address implements Serializable {
 	private Integer id;
 	private String name;
 	
+	@ManyToOne
+	@JoinColumn(name="sid")
+	private Student student;
+	
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
 	@Version
 	private Integer version;
 	

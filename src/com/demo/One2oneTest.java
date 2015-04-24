@@ -1,4 +1,4 @@
-package com.demo.one2one;
+package com.demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,10 @@ import javax.persistence.Table;
 
 import org.junit.Test;
 
-import com.demo.DaoTest;
-
 public class One2oneTest extends DaoTest {
 
 	@Test
-	public void testOne2one(){
+	public void test(){
 		
 		em.getTransaction().begin();
 		

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Query;
 import javax.persistence.Table;
 
@@ -69,8 +70,7 @@ class Order{
 	private String name;
 	private Double amount;
 	
-<<<<<<< HEAD
-=======
+
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="order")
 	private List<OrderItem> items = new ArrayList<OrderItem>();
 	
@@ -82,7 +82,7 @@ class Order{
 		this.items = items;
 	}
 
->>>>>>> one2one-only persist from owing side
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="customer_id")
 	private Customer customer;
@@ -127,11 +127,9 @@ class Order{
 class Customer{
 	@Id
 	private Integer id;
-<<<<<<< HEAD
+
 	private String name;
-=======
-	private String name;		
->>>>>>> one2one-only persist from owing side
+
 	
 	@OneToOne(mappedBy="customer",cascade=CascadeType.ALL)
 	private Order order;
@@ -154,10 +152,6 @@ class Customer{
 	public void setName(String name) {
 		this.name = name;
 	}
-<<<<<<< HEAD
-	
-	
-=======
 			
 }
 
@@ -190,6 +184,5 @@ class OrderItem{
 	public void setName(String name) {
 		this.name = name;
 	}
->>>>>>> one2one-only persist from owing side
 	
 }
